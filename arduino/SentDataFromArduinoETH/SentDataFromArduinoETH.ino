@@ -33,8 +33,8 @@ int FIWARE_PORT = 7896;
 //  VARIABLES
 const int numsensors = 2;
 String measures[numsensors][2];
-char DEVICE_apikey[] = "4jggokgpepnvsb2uvd59ov"; // Arduino key
-char DEVICE_id[] = "id_sen0"; // Arduino id
+char DEVICE_apikey[] = "MyKey0000001"; // Arduino key
+char DEVICE_id[] = "ard001"; // Arduino id
 // ....................................................
 
 unsigned long lastConnectionTime = 0;            // last time you connected to the server, in milliseconds
