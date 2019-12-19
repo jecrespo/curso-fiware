@@ -1,0 +1,1558 @@
+{
+	"info": {
+		"_postman_id": "aa10820b-d356-49b9-acea-edd443dd1af8",
+		"name": "Curso_Fiware_Orion_CB",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Orion Context Broker",
+			"item": [
+				{
+					"name": "Create entity CAR",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": \"Car1\",\n\t\"type\":\"Car\",  \n\t\"speed\": {\n\t\t\"type\":\"Float\",  \n\t\t\"value\": 98\n\t\t}\n}\n\n\t\t"
+						},
+						"url": {
+							"raw": "{{orion}}/v2/entities",
+							"host": [
+								"{{orion}}"
+							],
+							"path": [
+								"v2",
+								"entities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a single entity",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{orion}}/v2/entities/Car1",
+							"host": [
+								"{{orion}}"
+							],
+							"path": [
+								"v2",
+								"entities",
+								"Car1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all entities",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{orion}}/v2/entities",
+							"host": [
+								"{{orion}}"
+							],
+							"path": [
+								"v2",
+								"entities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a single entity",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{orion}}/v2/entities/Car1",
+							"host": [
+								"{{orion}}"
+							],
+							"path": [
+								"v2",
+								"entities",
+								"Car1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update attribute",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"type\": \"Float\",\n    \"value\": 110\n}"
+						},
+						"url": {
+							"raw": "{{orion}}/v2/entities/Car1/attrs/speed",
+							"host": [
+								"{{orion}}"
+							],
+							"path": [
+								"v2",
+								"entities",
+								"Car1",
+								"attrs",
+								"speed"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get single attribute",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{orion}}/v2/entities/Car1/attrs/speed",
+							"host": [
+								"{{orion}}"
+							],
+							"path": [
+								"v2",
+								"entities",
+								"Car1",
+								"attrs",
+								"speed"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Set attribute value as text",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/plain"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "115"
+						},
+						"url": {
+							"raw": "{{orion}}/v2/entities/Car1/attrs/speed/value",
+							"host": [
+								"{{orion}}"
+							],
+							"path": [
+								"v2",
+								"entities",
+								"Car1",
+								"attrs",
+								"speed",
+								"value"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get attribute value as text",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{orion}}/v2/entities/Car1/attrs/speed/value",
+							"host": [
+								"{{orion}}"
+							],
+							"path": [
+								"v2",
+								"entities",
+								"Car1",
+								"attrs",
+								"speed",
+								"value"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete attribute",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{orion}}/v2/entities/Car1/attrs/speed",
+							"host": [
+								"{{orion}}"
+							],
+							"path": [
+								"v2",
+								"entities",
+								"Car1",
+								"attrs",
+								"speed"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create entity ROOM",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": \"Room1\",\n\t\"type\":\"Room\",  \n\t\"temperature\": {  \n\t\t\"type\": \"Float\",\n\t\t\"value\": 24\n\t},\n\t\"pressure\": {  \n\t\t\"type\":\"Integer\",\n\t\t\"value\": 718\n\t}\n}\n\n\n\t\t"
+						},
+						"url": {
+							"raw": "{{orion}}/v2/entities",
+							"host": [
+								"{{orion}}"
+							],
+							"path": [
+								"v2",
+								"entities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update entity attributes (append & update)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"temperature\": {\n\t\t\"value\": 30,\n\t\t\"type\": \"Float\"\n\t}\n}\n\t\t"
+						},
+						"url": {
+							"raw": "{{orion}}/v2/entities/Room1/attrs",
+							"host": [
+								"{{orion}}"
+							],
+							"path": [
+								"v2",
+								"entities",
+								"Room1",
+								"attrs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update entity attributes (strict update)",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"temperature\":{     \n\t\t\"type\":\"Float\",\n\t\t\"value\": 35\n\t},\n\t\"pressure\": {  \n\t\t\"type\": \"Integer\",\n\t\t\"value\": 720\n\t}\n}\n\n\t\t"
+						},
+						"url": {
+							"raw": "{{orion}}/v2/entities/Room1/attrs",
+							"host": [
+								"{{orion}}"
+							],
+							"path": [
+								"v2",
+								"entities",
+								"Room1",
+								"attrs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update entity attributes (replace)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"description\": {\n\t\t\"value\": \"My Room entity\",\n\t\t\"type\": \"Text\"\n\t},\n\t\"status\": {\n\t\t\"value\": \"Opened\",\n\t\t\"type\": \"Text\"\n\t},\n\t\"humidity\": {\n\t\t\"value\": 44.23,\n\t\t\"type\": \"Float\"\n\t}\n}\t\t"
+						},
+						"url": {
+							"raw": "{{orion}}/v2/entities/Room1/attrs",
+							"host": [
+								"{{orion}}"
+							],
+							"path": [
+								"v2",
+								"entities",
+								"Room1",
+								"attrs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get attributes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{orion}}/v2/entities/Room1/attrs",
+							"host": [
+								"{{orion}}"
+							],
+							"path": [
+								"v2",
+								"entities",
+								"Room1",
+								"attrs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get attribute key values",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{orion}}/v2/entities/Room1/attrs?options=keyValues",
+							"host": [
+								"{{orion}}"
+							],
+							"path": [
+								"v2",
+								"entities",
+								"Room1",
+								"attrs"
+							],
+							"query": [
+								{
+									"key": "options",
+									"value": "keyValues"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create entity ROOM 2",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": \"Room2\",\n\t\"type\":\"Room\",  \n\t\"temperature\": {  \n\t\t\"type\": \"Float\",\n\t\t\"value\": 29\n\t},\n\t\"pressure\": {  \n\t\t\"type\":\"Integer\",\n\t\t\"value\": 730\n\t}\n}\n\n\n\t\t"
+						},
+						"url": {
+							"raw": "{{orion}}/v2/entities",
+							"host": [
+								"{{orion}}"
+							],
+							"path": [
+								"v2",
+								"entities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create several entities BATCH",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"actionType\": \"APPEND\",\n\t\"entities\":[\n\t{\n\t\t\"id\": \"Room3\",  \n\t\t\"type\": \"Room\",\n\t\t\"temperature\":{\n\t\t\t\"type\": \"Float\",\n\t\t\t\"value\": 21.2\n\t\t},\n\t\t\"pressure\":{\n\t\t\t\"type\": \"Integer\",\n\t\t\t\"value\": 722\n\t\t}\n\t},\n\t{\n\t\t\"id\": \"Room4\",  \n\t\t\"type\": \"Room\",\n\t\t\"temperature\":{  \n\t\t\t\"type\": \"Float\",\n\t\t\t\"value\": 31.8\n\t\t},\n\t\t\"pressure\": {\n\t\t\t\"type\": \"Integer\",\n\t\t\t\"value\": 712\n\t\t}\n\t}\n    ]\n}\n\n\n\n\t\t"
+						},
+						"url": {
+							"raw": "{{orion}}/v2/op/update",
+							"host": [
+								"{{orion}}"
+							],
+							"path": [
+								"v2",
+								"op",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete several entities BATCH",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"actionType\": \"DELETE\",\n\t\"entities\":[\n\t{\n\t\t\"id\": \"Room3\",  \n\t\t\"type\": \"Room\"\n\t},\n\t{\n\t\t\"id\": \"Room4\",  \n\t\t\"type\": \"Room\"\n\t}\n  ]\n}\n\n\n\n\t\t"
+						},
+						"url": {
+							"raw": "{{orion}}/v2/op/update",
+							"host": [
+								"{{orion}}"
+							],
+							"path": [
+								"v2",
+								"op",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all entities PAGINATION",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{orion}}/v2/entities?offset=1&options=count&offset=1&orderBy=temperature",
+							"host": [
+								"{{orion}}"
+							],
+							"path": [
+								"v2",
+								"entities"
+							],
+							"query": [
+								{
+									"key": "offset",
+									"value": "1"
+								},
+								{
+									"key": "options",
+									"value": "count"
+								},
+								{
+									"key": "offset",
+									"value": "1"
+								},
+								{
+									"key": "orderBy",
+									"value": "temperature"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create entity ROOM METADATA",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": \"Room5\",\n\t\"type\":\"Room\",  \n\t\"temperature\": {  \n\t\t\"type\": \"Float\",\n\t\t\"value\": 26.5,\n\t\t\"metadata\": {\n\t\t\t\"accuracy\": {  \n        \t\t\"type\": \"Float\",  \n        \t\t\"value\": 0.9\n\t\t\t}\n\t\t}\n\t},\n\t\"pressure\": {  \n\t\t\"type\":\"Integer\",\n\t\t\"value\": 730\n\t}\n}\n\n\n\t\t"
+						},
+						"url": {
+							"raw": "{{orion}}/v2/entities",
+							"host": [
+								"{{orion}}"
+							],
+							"path": [
+								"v2",
+								"entities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create entity CAR METADATA",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": \"Car1\",  \n\t\"type\": \"Car\",\n\t\"tirePressure\": {\n\t\t\"type\": \"kPa\",\n\t\t\"value\": {\n\t\t\t\"frontRight\": 120,\n\t\t\t\"frontLeft\": 110,\n\t\t\t\"backRight\": 115,\n\t\t\t\"backLeft\": 130\n\t\t}\n\t}\n}\n\n\n\n\t\t"
+						},
+						"url": {
+							"raw": "{{orion}}/v2/entities",
+							"host": [
+								"{{orion}}"
+							],
+							"path": [
+								"v2",
+								"entities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all TYPES",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{orion}}/v2/types",
+							"host": [
+								"{{orion}}"
+							],
+							"path": [
+								"v2",
+								"types"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a single type",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{orion}}/v2/types/Car",
+							"host": [
+								"{{orion}}"
+							],
+							"path": [
+								"v2",
+								"types",
+								"Car"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a single type key values",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{orion}}/v2/types?options=values",
+							"host": [
+								"{{orion}}"
+							],
+							"path": [
+								"v2",
+								"types"
+							],
+							"query": [
+								{
+									"key": "options",
+									"value": "values"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get entities FILTERS type",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{orion}}/v2/entities?type=Room",
+							"host": [
+								"{{orion}}"
+							],
+							"path": [
+								"v2",
+								"entities"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "Room"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get entities FILTERS id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{orion}}/v2/entities?id=Room1,Room2",
+							"host": [
+								"{{orion}}"
+							],
+							"path": [
+								"v2",
+								"entities"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "Room1,Room2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get entities FILTERS id pattern",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{orion}}/v2/entities?idPattern=^Room[2-4]",
+							"host": [
+								"{{orion}}"
+							],
+							"path": [
+								"v2",
+								"entities"
+							],
+							"query": [
+								{
+									"key": "idPattern",
+									"value": "^Room[2-4]"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get entities FILTERS type pattern",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{orion}}/v2/entities?typePattern=C",
+							"host": [
+								"{{orion}}"
+							],
+							"path": [
+								"v2",
+								"entities"
+							],
+							"query": [
+								{
+									"key": "typePattern",
+									"value": "C"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get entities FILTERS several",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{orion}}/v2/entities?typePattern=R&idPattern=^Room[3-4]",
+							"host": [
+								"{{orion}}"
+							],
+							"path": [
+								"v2",
+								"entities"
+							],
+							"query": [
+								{
+									"key": "typePattern",
+									"value": "R"
+								},
+								{
+									"key": "idPattern",
+									"value": "^Room[3-4]"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get entities FILTERS attributes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{orion}}/v2/entities?q=temperature>25",
+							"host": [
+								"{{orion}}"
+							],
+							"path": [
+								"v2",
+								"entities"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "temperature>25"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get entities FILTERS attributes sub",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{orion}}/v2/entities?q=tirePressure.frontRight >110",
+							"host": [
+								"{{orion}}"
+							],
+							"path": [
+								"v2",
+								"entities"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "tirePressure.frontRight >110"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get entities FILTERS metadata",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{orion}}/v2/entities?mq=temperature.accuracy>0.7",
+							"host": [
+								"{{orion}}"
+							],
+							"path": [
+								"v2",
+								"entities"
+							],
+							"query": [
+								{
+									"key": "mq",
+									"value": "temperature.accuracy>0.7"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create several entities GEO",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"actionType\": \"APPEND\",\n\t\"entities\":[\n    {\n\t\t\"id\": \"Madrid\",  \n\t\t\"type\": \"City\",\n\t\t\"position\": {\n\t\t\t\"type\": \"geo:point\",\n\t\t\t\"value\": \"40.418889, -3.691944\"\n        }\n\t},\n    {\n\t\t\"id\": \"Leganes\",  \n\t\t\"type\": \"City\",\n\t\t\"position\": {\n\t\t\t\"type\": \"geo:point\",\n\t\t\t\"value\": \"40.316667, -3.75\"\n        }\n\t},\n\t    {\n\t\t\"id\": \"Alcobendas\",  \n\t\t\"type\": \"City\",\n\t\t\"position\": {\n\t\t\t\"type\": \"geo:point\",\n\t\t\t\"value\": \"40.533333, -3.633333\"\n        }\n\t}\n    ]\n}\n\n\n\n\t\t"
+						},
+						"url": {
+							"raw": "{{orion}}/v2/op/update",
+							"host": [
+								"{{orion}}"
+							],
+							"path": [
+								"v2",
+								"op",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get entities FILTERS GEO max",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{orion}}/v2/entities?idPattern=.*&type=City&georel=near;maxDistance:13500&geometry=point&coords=40.418889,-3.691944",
+							"host": [
+								"{{orion}}"
+							],
+							"path": [
+								"v2",
+								"entities"
+							],
+							"query": [
+								{
+									"key": "idPattern",
+									"value": ".*"
+								},
+								{
+									"key": "type",
+									"value": "City"
+								},
+								{
+									"key": "georel",
+									"value": "near;maxDistance:13500"
+								},
+								{
+									"key": "geometry",
+									"value": "point"
+								},
+								{
+									"key": "coords",
+									"value": "40.418889,-3.691944"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get entities FILTERS GEO min",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{orion}}/v2/entities?idPattern=.*&type=City&georel=near;minDistance:13500&geometry=point&coords=40.418889,-3.691944",
+							"host": [
+								"{{orion}}"
+							],
+							"path": [
+								"v2",
+								"entities"
+							],
+							"query": [
+								{
+									"key": "idPattern",
+									"value": ".*"
+								},
+								{
+									"key": "type",
+									"value": "City"
+								},
+								{
+									"key": "georel",
+									"value": "near;minDistance:13500"
+								},
+								{
+									"key": "geometry",
+									"value": "point"
+								},
+								{
+									"key": "coords",
+									"value": "40.418889,-3.691944"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create entity JOHN DATETIME",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": \"John\",\n  \"type\": \"Person\",\n  \"birthDate\": {\n    \"type\": \"DateTime\",\n    \"value\": \"1979-10-14T07:21:24.238Z\"\n  }\n}\n\n\n\n\n\t\t"
+						},
+						"url": {
+							"raw": "{{orion}}/v2/entities",
+							"host": [
+								"{{orion}}"
+							],
+							"path": [
+								"v2",
+								"entities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get entities FILTERS datetime",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{orion}}/v2/entities?q=birthDate<1985-01-01T00:00:00\n",
+							"host": [
+								"{{orion}}"
+							],
+							"path": [
+								"v2",
+								"entities"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "birthDate<1985-01-01T00:00:00\n"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get entities FILTERS datetime entity",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{orion}}/v2/entities/John?options=dateModified,dateCreated\n\n",
+							"host": [
+								"{{orion}}"
+							],
+							"path": [
+								"v2",
+								"entities",
+								"John"
+							],
+							"query": [
+								{
+									"key": "options",
+									"value": "dateModified,dateCreated\n\n"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get entities FILTERS datetime attributes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{orion}}/v2/entities/John?attrs=dateModified,dateCreated\n\n",
+							"host": [
+								"{{orion}}"
+							],
+							"path": [
+								"v2",
+								"entities",
+								"John"
+							],
+							"query": [
+								{
+									"key": "attrs",
+									"value": "dateModified,dateCreated\n\n"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get entities FILTERS datetime metadata",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{orion}}/v2/entities/John?metadata=dateModified,dateCreated\n\n",
+							"host": [
+								"{{orion}}"
+							],
+							"path": [
+								"v2",
+								"entities",
+								"John"
+							],
+							"query": [
+								{
+									"key": "metadata",
+									"value": "dateModified,dateCreated\n\n"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create entity TRANSIENT",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": \"Warning1\",\n\t\"type\": \"Transient\",\n\t\"dateExpires\": {\n\t\t\"type\": \"DateTime\",\n\t\t\"value\": \"2019-12-17T19:00:00Z\"\n\t}\n}\n\n\n\n\n\t\t"
+						},
+						"url": {
+							"raw": "{{orion}}/v2/entities",
+							"host": [
+								"{{orion}}"
+							],
+							"path": [
+								"v2",
+								"entities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get entities FILTERS dateExpires I",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{orion}}/v2/entities?attrs=dateExpires\n\n",
+							"host": [
+								"{{orion}}"
+							],
+							"path": [
+								"v2",
+								"entities"
+							],
+							"query": [
+								{
+									"key": "attrs",
+									"value": "dateExpires\n\n"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get entities FILTERS dateExpires II",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{orion}}/v2/entities?q=dateExpires<2020-01-01T00:00:00\n\n",
+							"host": [
+								"{{orion}}"
+							],
+							"path": [
+								"v2",
+								"entities"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "dateExpires<2020-01-01T00:00:00\n\n"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all SUBSCRIPTIONS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{orion}}/v2/subscriptions",
+							"host": [
+								"{{orion}}"
+							],
+							"path": [
+								"v2",
+								"subscriptions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create subscription",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"description\": \"A subscription to get temperature\",\r\n\t\"subject\": {\r\n\t\t\"entities\": [\r\n\t\t  {\r\n\t\t\t\"idPattern\": \"Room2\",\r\n\t\t\t\"type\": \"Room\"\r\n\t\t  }\r\n\t\t],\r\n\t\t\"condition\": {\r\n\t\t\t\"attrs\": [ \"temperature\" ]\r\n\t\t}\r\n\t},\r\n\t\"notification\": {  \r\n\t\t\"http\": {\r\n    \t\t\"url\": \"https://putsreq.com/3gJLfGTSadsVf63muE5K\"\r\n\t\t},\r\n\t\t\"attrs\": [ \"temperature\"    ]\r\n\t},\r\n\t\"expires\": \"2026-04-05T14:00:00.00Z\"\r\n}\r\n"
+						},
+						"url": {
+							"raw": "{{orion}}/v2/subscriptions",
+							"host": [
+								"{{orion}}"
+							],
+							"path": [
+								"v2",
+								"subscriptions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a single subscription",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{orion}}/v2/subscriptions/5df5dcfbd88413251df5ce11",
+							"host": [
+								"{{orion}}"
+							],
+							"path": [
+								"v2",
+								"subscriptions",
+								"5df5dcfbd88413251df5ce11"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Temperature",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"temperature\":{     \n\t\t\"type\":\"Float\",\n\t\t\"value\": 19\n\t}\n}\n\n\t\t"
+						},
+						"url": {
+							"raw": "{{orion}}/v2/entities/Room2/attrs",
+							"host": [
+								"{{orion}}"
+							],
+							"path": [
+								"v2",
+								"entities",
+								"Room2",
+								"attrs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create subscription (custom notification)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"description\": \"A custom subscription to get temperature\",\r\n  \"subject\": {\r\n    \"entities\": [\r\n      {\r\n        \"idPattern\": \".*\",\r\n        \"type\": \"Room\"\r\n      }\r\n    ],\r\n    \"condition\": {\r\n      \"attrs\": [ ]\r\n    }\r\n  },\r\n  \"notification\": {\r\n    \"httpCustom\": {\r\n      \"url\": \"https://putsreq.com/3gJLfGTSadsVf63muE5K\",\r\n      \"headers\": {\r\n      \t\"Content-Type\": \"text/plain\"\r\n      },\r\n      \"qs\": {\r\n\t\t\"type\": \"${type}\"\r\n      },\r\n      \"payload\": \"The temperature is ${temperature} degrees\"\r\n    },\r\n    \"attrs\": [\r\n      \"temperature\"\r\n    ]\r\n  }\r\n}"
+						},
+						"url": {
+							"raw": "{{orion}}/v2/subscriptions",
+							"host": [
+								"{{orion}}"
+							],
+							"path": [
+								"v2",
+								"subscriptions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Temperature",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/plain",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "26.4\n\n\t\t"
+						},
+						"url": {
+							"raw": "{{orion}}/v2/entities/Room4/attrs/temperature/value?type=Room",
+							"host": [
+								"{{orion}}"
+							],
+							"path": [
+								"v2",
+								"entities",
+								"Room4",
+								"attrs",
+								"temperature",
+								"value"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "Room"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update subscription",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"status\": \"inactive\"\n}"
+						},
+						"url": {
+							"raw": "{{orion}}/v2/subscriptions/5df912c1ec378ff0c2b75bb7",
+							"host": [
+								"{{orion}}"
+							],
+							"path": [
+								"v2",
+								"subscriptions",
+								"5df912c1ec378ff0c2b75bb7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a single subscription",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{orion}}/v2/subscriptions/5df5dcfbd88413251df5ce11",
+							"host": [
+								"{{orion}}"
+							],
+							"path": [
+								"v2",
+								"subscriptions",
+								"5df5dcfbd88413251df5ce11"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create entity SERVICE cliente1 madrid",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "fiware-service",
+								"value": "cliente1",
+								"type": "text"
+							},
+							{
+								"key": "fiware-servicePath",
+								"value": "/Madrid",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": \"fuente1\",\n\t\"type\":\"Fuente\",  \n\t\"temperature\": {\n\t\t\"type\":\"Float\",  \n\t\t\"value\": 15\n\t\t}\n}\n\n\t\t"
+						},
+						"url": {
+							"raw": "{{orion}}/v2/entities",
+							"host": [
+								"{{orion}}"
+							],
+							"path": [
+								"v2",
+								"entities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create entity SERVICE cliente1 Barcelona",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "fiware-service",
+								"value": "cliente1",
+								"type": "text"
+							},
+							{
+								"key": "fiware-servicePath",
+								"value": "/Barcelona",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": \"fuente1\",\n\t\"type\":\"Fuente\",  \n\t\"temperature\": {\n\t\t\"type\":\"Float\",  \n\t\t\"value\": 12\n\t\t}\n}\n\n\t\t"
+						},
+						"url": {
+							"raw": "{{orion}}/v2/entities",
+							"host": [
+								"{{orion}}"
+							],
+							"path": [
+								"v2",
+								"entities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create entity SERVICE cliente2 madrid",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "fiware-service",
+								"value": "cliente2",
+								"type": "text"
+							},
+							{
+								"key": "fiware-servicePath",
+								"value": "/Madrid",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": \"fuente1\",\n\t\"type\":\"Fuente\",  \n\t\"temperature\": {\n\t\t\"type\":\"Float\",  \n\t\t\"value\": 15\n\t\t}\n}\n\n\t\t"
+						},
+						"url": {
+							"raw": "{{orion}}/v2/entities",
+							"host": [
+								"{{orion}}"
+							],
+							"path": [
+								"v2",
+								"entities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create entity SERVICE cliente2 Barcelona",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "fiware-service",
+								"value": "cliente2",
+								"type": "text"
+							},
+							{
+								"key": "fiware-servicePath",
+								"value": "/Barcelona",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": \"fuente1\",\n\t\"type\":\"Fuente\",  \n\t\"temperature\": {\n\t\t\"type\":\"Float\",  \n\t\t\"value\": 12\n\t\t}\n}\n\n\t\t"
+						},
+						"url": {
+							"raw": "{{orion}}/v2/entities",
+							"host": [
+								"{{orion}}"
+							],
+							"path": [
+								"v2",
+								"entities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Cliente",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "fiware-service",
+								"type": "text",
+								"value": "cliente1"
+							},
+							{
+								"key": "fiware-servicePath",
+								"type": "text",
+								"value": "/Madrid"
+							}
+						],
+						"url": {
+							"raw": "{{domain}}:1026/v2/entities/",
+							"host": [
+								"{{domain}}"
+							],
+							"port": "1026",
+							"path": [
+								"v2",
+								"entities",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Check health",
+			"item": [
+				{
+					"name": "get_Orion_version",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{orion}}/version/",
+							"host": [
+								"{{orion}}"
+							],
+							"path": [
+								"version",
+								""
+							]
+						},
+						"description": "http://82.223.70.251:1026/version/"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
