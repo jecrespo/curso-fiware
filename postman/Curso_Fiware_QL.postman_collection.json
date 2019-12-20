@@ -1,0 +1,762 @@
+{
+	"info": {
+		"_postman_id": "587a138a-6aff-4830-9025-b0b8b6c533a0",
+		"name": "Curso_Fiware_QL",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "IoT Agent: Arduino QL",
+			"item": [
+				{
+					"name": "Check",
+					"item": [
+						{
+							"name": "get_IoT_Agent_version",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{iotagent_north}}/iot/about",
+									"host": [
+										"{{iotagent_north}}"
+									],
+									"path": [
+										"iot",
+										"about"
+									]
+								},
+								"description": "http://82.223.70.251:1026/version/"
+							},
+							"response": []
+						},
+						{
+							"name": "get_Orion_version",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{orion}}/version/",
+									"host": [
+										"{{orion}}"
+									],
+									"path": [
+										"version",
+										""
+									]
+								},
+								"description": "http://82.223.70.251:1026/version/"
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "1º) Create IoT Agent Service",
+					"item": [
+						{
+							"name": "Create_Service_Group_MUltisensor",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "fiware-service",
+										"value": "{{service}}"
+									},
+									{
+										"key": "fiware-servicepath",
+										"value": "{{servicepath}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n \"services\": [\n   {\n     \"apikey\":      \"MyKey0000001\",\n     \"cbroker\":     \"http://orion:1026\",\n     \"entity_type\": \"NodeArduino\",\n     \"resource\":    \"/iot/d\"\n   }\n ]\n}"
+								},
+								"url": {
+									"raw": "{{iotagent_north}}/iot/services",
+									"host": [
+										"{{iotagent_north}}"
+									],
+									"path": [
+										"iot",
+										"services"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List_services",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "fiware-service",
+										"value": "{{service}}"
+									},
+									{
+										"key": "fiware-servicepath",
+										"value": "{{servicepath}}"
+									}
+								],
+								"url": {
+									"raw": "{{iotagent_north}}/iot/services",
+									"host": [
+										"{{iotagent_north}}"
+									],
+									"path": [
+										"iot",
+										"services"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete_service_MultiSensor",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "fiware-service",
+										"value": "{{service}}"
+									},
+									{
+										"key": "fiware-servicepath",
+										"value": "{{servicepath}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{iotagent_north}}/iot/services/?resource=/iot/d&apikey=MyKey0000001",
+									"host": [
+										"{{iotagent_north}}"
+									],
+									"path": [
+										"iot",
+										"services",
+										""
+									],
+									"query": [
+										{
+											"key": "resource",
+											"value": "/iot/d"
+										},
+										{
+											"key": "apikey",
+											"value": "MyKey0000001"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "2º) Create Device",
+					"item": [
+						{
+							"name": "Create_device_Multisensor",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "fiware-service",
+										"value": "{{service}}",
+										"type": "text"
+									},
+									{
+										"key": "fiware-servicePath",
+										"value": " {{servicepath}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n \"devices\": [\n   {\n     \"device_id\":   \"ard001\",\n     \"entity_name\": \"urn:ngsi-ld:NodeArduino:ard001\",\n     \"entity_type\": \"NodeArduino\",\n     \"attributes\": [\n       { \"object_id\": \"t\", \"name\":\"temp\", \"type\":\"Number\"},\n       { \"object_id\": \"h\", \"name\":\"humid\", \"type\":\"Number\"}\n      ]\n   }\n ]\n}\n\n"
+								},
+								"url": {
+									"raw": "{{iotagent_north}}/iot/devices",
+									"host": [
+										"{{iotagent_north}}"
+									],
+									"path": [
+										"iot",
+										"devices"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List_devices",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "fiware-service",
+										"value": "openiot_ul",
+										"type": "text"
+									},
+									{
+										"key": "fiware-servicepath",
+										"value": "/",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{iotagent_north}}/iot/devices/",
+									"host": [
+										"{{iotagent_north}}"
+									],
+									"path": [
+										"iot",
+										"devices",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete_MultiSensor",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "fiware-service",
+										"value": "openiot_ul",
+										"type": "text"
+									},
+									{
+										"key": "fiware-servicepath",
+										"value": "/",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{iotagent_north}}/iot/devices/ard001",
+									"host": [
+										"{{iotagent_north}}"
+									],
+									"path": [
+										"iot",
+										"devices",
+										"ard001"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List Nodes",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "fiware-service",
+										"value": "openiot_ul"
+									},
+									{
+										"key": "fiware-ServicePath",
+										"value": "/"
+									}
+								],
+								"url": {
+									"raw": "{{orion}}/v2/entities",
+									"host": [
+										"{{orion}}"
+									],
+									"path": [
+										"v2",
+										"entities"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Nodes",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "fiware-service",
+										"value": "openiot_ul"
+									},
+									{
+										"key": "fiware-ServicePath",
+										"value": "/"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{orion}}/v2/entities/urn:ngsi-ld:NodeArduino:ard001?type=NodeArduino",
+									"host": [
+										"{{orion}}"
+									],
+									"path": [
+										"v2",
+										"entities",
+										"urn:ngsi-ld:NodeArduino:ard001"
+									],
+									"query": [
+										{
+											"key": "type",
+											"value": "NodeArduino"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "3º) Create Subscription to QL",
+					"item": [
+						{
+							"name": "QL version",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "fiware-service",
+										"value": "default",
+										"disabled": true
+									},
+									{
+										"key": "fiware-ServicePath",
+										"value": "/",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{quantumleap}}/v2/version",
+									"host": [
+										"{{quantumleap}}"
+									],
+									"path": [
+										"v2",
+										"version"
+									]
+								},
+								"description": "Orion version in Swarm"
+							},
+							"response": []
+						},
+						{
+							"name": "CrateDB",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{cratedb}}",
+									"host": [
+										"{{cratedb}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Subscription Arduino",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "fiware-service",
+										"value": "openiot_ul"
+									},
+									{
+										"key": "fiware-ServicePath",
+										"value": "/"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"description\": \"Manual Subscription created from Postman\",\n    \"notification\": {\n        \"attrs\": [],\n        \"http\": {\n            \"url\": \"http://quantumleap:8668/v2/notify\"\n        },\n        \"metadata\": [\n            \"dateCreated\",\n            \"dateModified\",\n            \"TimeInstant\",\n            \"timestamp\"\n        ]\n    },\n    \"subject\": {\n        \"condition\": {\n            \"attrs\": []\n        },\n        \"entities\": [\n            {\n                \"idPattern\": \".*\",\n                \"type\": \"NodeArduino\"\n            }\n        ]\n    },\n      \"throttling\": 1\n}"
+								},
+								"url": {
+									"raw": "{{orion}}/v2/subscriptions",
+									"host": [
+										"{{orion}}"
+									],
+									"path": [
+										"v2",
+										"subscriptions"
+									]
+								},
+								"description": "Subscribe Comet to Orion changes in Swarm"
+							},
+							"response": []
+						},
+						{
+							"name": "Get subscriptions",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "fiware-service",
+										"value": "openiot_ul"
+									},
+									{
+										"key": "fiware-ServicePath",
+										"value": "/"
+									}
+								],
+								"url": {
+									"raw": "{{orion}}/v2/subscriptions",
+									"host": [
+										"{{orion}}"
+									],
+									"path": [
+										"v2",
+										"subscriptions"
+									]
+								},
+								"description": "Orion subscriptions in Swarm"
+							},
+							"response": []
+						},
+						{
+							"name": "Delete subscription",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "fiware-service",
+										"value": "openiot_ul"
+									},
+									{
+										"key": "fiware-ServicePath",
+										"value": "/"
+									}
+								],
+								"url": {
+									"raw": "{{orion}}/v2/subscriptions/5da454efcbdc0464b4ffc4eb",
+									"host": [
+										"{{orion}}"
+									],
+									"path": [
+										"v2",
+										"subscriptions",
+										"5da454efcbdc0464b4ffc4eb"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "QL delete entity",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "fiware-service",
+										"value": "openiot_ul",
+										"type": "text"
+									},
+									{
+										"key": "fiware-ServicePath",
+										"value": "/",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{quantumleap}}/v2/types/NodeArduino",
+									"host": [
+										"{{quantumleap}}"
+									],
+									"path": [
+										"v2",
+										"types",
+										"NodeArduino"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "QL get entities",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{orion}}/v2/types?options=values",
+									"host": [
+										"{{orion}}"
+									],
+									"path": [
+										"v2",
+										"types"
+									],
+									"query": [
+										{
+											"key": "options",
+											"value": "values"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "4º) Test: Sent Data From Sensors",
+					"item": [
+						{
+							"name": "Sent Measurement",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "text/plain"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "t|25.00|h|45.73\r"
+								},
+								"url": {
+									"raw": "{{iotagent_south}}/iot/d?k=MyKey0000001&i=ard001",
+									"host": [
+										"{{iotagent_south}}"
+									],
+									"path": [
+										"iot",
+										"d"
+									],
+									"query": [
+										{
+											"key": "k",
+											"value": "MyKey0000001"
+										},
+										{
+											"key": "i",
+											"value": "ard001"
+										}
+									]
+								},
+								"description": "This example simulates a request coming from the device `motion001`\n\nThe request to the previously provisioned resource `iot/d` is in UltraLight 2.0 format\nand identifies the device `motion001` and passes a known API key.\n\nA similar request was made in the previous tutorial (before the IoT Agent was connected)\nwhen the door was unlocked, you will have seen the state of each motion sensor changing\nand a Northbound request will be logged in the device monitor."
+							},
+							"response": []
+						},
+						{
+							"name": "Sent Measurement Copy",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "text/plain"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "t|24.80|h|46.12\r"
+								},
+								"url": {
+									"raw": "{{iotagent_south}}/iot/d?k=MyKey0000001&i=ard001",
+									"host": [
+										"{{iotagent_south}}"
+									],
+									"path": [
+										"iot",
+										"d"
+									],
+									"query": [
+										{
+											"key": "k",
+											"value": "MyKey0000001"
+										},
+										{
+											"key": "i",
+											"value": "ard001"
+										}
+									]
+								},
+								"description": "This example simulates a request coming from the device `motion001`\n\nThe request to the previously provisioned resource `iot/d` is in UltraLight 2.0 format\nand identifies the device `motion001` and passes a known API key.\n\nA similar request was made in the previous tutorial (before the IoT Agent was connected)\nwhen the door was unlocked, you will have seen the state of each motion sensor changing\nand a Northbound request will be logged in the device monitor."
+							},
+							"response": []
+						},
+						{
+							"name": "Sent Measurement Copy Copy",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "text/plain"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "t|24.88|h|45.05\r"
+								},
+								"url": {
+									"raw": "{{iotagent_south}}/iot/d?k=MyKey0000001&i=ard001",
+									"host": [
+										"{{iotagent_south}}"
+									],
+									"path": [
+										"iot",
+										"d"
+									],
+									"query": [
+										{
+											"key": "k",
+											"value": "MyKey0000001"
+										},
+										{
+											"key": "i",
+											"value": "ard001"
+										}
+									]
+								},
+								"description": "This example simulates a request coming from the device `motion001`\n\nThe request to the previously provisioned resource `iot/d` is in UltraLight 2.0 format\nand identifies the device `motion001` and passes a known API key.\n\nA similar request was made in the previous tutorial (before the IoT Agent was connected)\nwhen the door was unlocked, you will have seen the state of each motion sensor changing\nand a Northbound request will be logged in the device monitor."
+							},
+							"response": []
+						},
+						{
+							"name": "Context Broker - Read the Motion Sensor",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "fiware-service",
+										"value": "{{service}}",
+										"type": "text"
+									},
+									{
+										"key": "fiware-servicepath",
+										"value": "{{servicepath}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{orion}}/v2/entities/urn:ngsi-ld:NodeArduino:ard001",
+									"host": [
+										"{{orion}}"
+									],
+									"path": [
+										"v2",
+										"entities",
+										"urn:ngsi-ld:NodeArduino:ard001"
+									]
+								},
+								"description": "This example returns the data for the `Motion` entity with the `id=urn:ngsi-ld:Motion:001` within the context data.\n\nThe response shows that the device with `id=motion001` has been successfully identifed by the IoT Agent and mapped to the\nentity `id=urn:ngsi-ld:Motion:001`. This new entity has been created within the context data. The `c` \nattribute from the dummy device measurement request has been mapped to the more meaningful `count` attribute\nwithin the context. As you will notice, a `TimeInstant` attribute has been added to both the entity and the\nmeta data of the attribute - this represents the last time the entity and attribute have been updated, and is\nautomatically added to each new entity because the `IOTA_TIMESTAMP`  environment variable was set when the\nIoT Agent was started up. The `refStore` attribute comes from the `static_attributes` set when the device was provisioned."
+							},
+							"response": []
+						},
+						{
+							"name": "Add location Arduino",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "fiware-service",
+										"value": "{{service}}",
+										"type": "text"
+									},
+									{
+										"key": "fiware-servicepath",
+										"value": "{{servicepath}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n     \"lat\": {\n                \"type\": \"Number\",\n                \"value\": 42.815320\n            },     \n     \"lon\": {\n                \"type\": \"Number\",\n                \"value\": -1.649997\n            }           \n}\n\n\n\n\n"
+								},
+								"url": {
+									"raw": "{{orion}}/v2/entities/urn:ngsi-ld:NodeArduino:ard001/attrs",
+									"host": [
+										"{{orion}}"
+									],
+									"path": [
+										"v2",
+										"entities",
+										"urn:ngsi-ld:NodeArduino:ard001",
+										"attrs"
+									]
+								},
+								"description": "Update atttrs of Orion entities in Swarm"
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
