@@ -1,4 +1,4 @@
-#define DEBUG 0
+#define DEBUG 1
 
 #include "secrets.h"
 
@@ -76,15 +76,17 @@ void grabaDatos() {
   Serial.print((float)humidity); Serial.println(" RH%");
 #endif
 
-  String datos = "{\"temperature\": {\"type\": \"Float\",\"value\": " + String(temperature) + "}, \"pressure\": {\"type\": \"Integer\", \"value\": " + String(humidity) + "}}";
+  String datos = "{\"t\": {\"type\": \"string\",\"value\": " + String(temperature) + "}, \"h\": {\"type\": \"string\", \"value\": " + String(humidity) + "}}";
 
 #if DEBUG
   Serial.println("connecting to server...");
 #endif
 
   if (client.connect(server, 1026)) {
-    client.println("PATCH /v2/entities/Arduino-Oficina1/attrs HTTP / 1.1");
+    client.println("PATCH /v2/entities/sensoroficina:ard001/attrs HTTP / 1.1");
     client.println("Content-Type: application/json");
+    client.println("fiware-service: demooficina");
+    client.println("fiware-ServicePath: /oficina/");
     client.print("Content-Length: ");
     client.println(datos.length());
     client.println("Connection: close");
@@ -92,8 +94,10 @@ void grabaDatos() {
     client.println(datos);
 
 #if DEBUG
-    Serial.println("PATCH /v2/entities/Arduino-Oficina1/attrs HTTP / 1.1");
+    Serial.println("PATCH /v2/entities/sensoroficina:ard001/attrs HTTP / 1.1");
     Serial.println("Content - Type: application/json");
+    client.println("fiware-service: demooficina");
+    client.println("fiware-ServicePath: /oficina/");
     Serial.print("Content-Length: ");
     Serial.println(datos.length());
     Serial.println("Connection: close");
