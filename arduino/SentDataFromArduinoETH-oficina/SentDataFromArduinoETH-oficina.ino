@@ -44,7 +44,7 @@ int FIWARE_PORT = 7896;
 //  VARIABLES
 const int numsensors = 2;
 String measures[numsensors][2];
-char DEVICE_apikey[] = "4jggokgpepnvsb2uvd59ov"; // Arduino key
+char DEVICE_apikey[] = "4jggokgpepnvsb2uvd59ob"; // Arduino key
 char DEVICE_id[] = "ard001"; // Arduino id
 // ....................................................
 
